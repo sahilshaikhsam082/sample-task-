@@ -1,0 +1,23 @@
+<h1>Create a mailing list </h1>
+
+
+<%= form_with url: 'http://localhost:3000/', method: :post do |f|%>
+  <p>
+    <%f.label :templates%> Select Template:
+    <%= f.select :templates, @templates.collect{|i| [i.title,i.id]}%>  
+    <br><br> 
+  </p>
+  <p>
+    <%f.label :emails%> Selcet Users:
+    <%= f.select :emails, @users.collect{|i| [i.email,i.id]},{ :multiple => true }%>  
+    <br><br>
+  </p>
+  <p>
+    <%f.label :dateinstructed%> Select date of delhivery
+    <%= f.date_select :dateinstructed, :order => [:day, :month, :year] %>
+    <br><br>
+  </p>
+  <%=f.submit%>
+  <br> 
+
+<% end %>
